@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-dev": "nodemon -e ts,html -w ./src -x 'ng build && gulp dist'"
   },
   "private": true,
   "dependencies": {
@@ -51,7 +52,7 @@
     "jquery.browser": "0.1.0",
     "jquery.flot.spline": "themicon/jquery.flot.spline",
     "jquery.flot.tooltip": "github:krzysu/flot.tooltip",
-    "lodash": "4.17.12",
+    "lodash": "^4.17.20",
     "modernizr": "3.7.1",
     "moment": "2.22.2",
     "ng2-charts": "2.3.0",
@@ -79,14 +80,16 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.2",
+    "@angular-devkit/build-angular": "^0.1000.6",
     "@angular/cli": "~9.0.2",
     "@angular/compiler-cli": "~9.0.1",
     "@angular/language-service": "~9.0.1",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "cheerio": "^1.0.0-rc.3",
     "codelyzer": "^5.1.2",
+    "gulp": "^4.0.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.3.0",
@@ -95,6 +98,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
+    "rimraf": "^3.0.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"

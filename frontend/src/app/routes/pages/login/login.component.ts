@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from 'ngx-custom-validators';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { TokenService } from 'src/app/core/token/token.service';
 
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
     ) {
 
         this.valForm = fb.group({
-            'email': ['', Validators.compose([Validators.required, CustomValidators.email])],
+            'email': ['', [Validators.required, Validators.email]],
             'password': [null, Validators.required]
         });
 

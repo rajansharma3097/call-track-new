@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { CustomValidators } from 'ngx-custom-validators';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { MustMatch } from '../../../shared/helpers/must-match.validator';
 
 @Component({
     selector: 'app-register',
@@ -17,16 +17,18 @@ export class RegisterComponent implements OnInit {
     constructor(public fb: FormBuilder, private authService: AuthService) {
 
         let password = new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9]{6,10}$')]));
-        let certainPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
+        let certainPassword = new FormControl('', Validators.required);
 
         this.passwordForm = fb.group({
             'password': password,
             'confirmPassword': certainPassword
+        }, {
+            validator: MustMatch('password', 'confirmPassword')
         });
 
         this.valForm = fb.group({
             'name': [null, Validators.required],
-            'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
+            'email': [null, [Validators.required, Validators.email]],
             // 'accountagreed': [null, Validators.required],
             'passwordGroup': this.passwordForm
         });
